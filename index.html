@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERP Mantenimiento CNC</title>
+
+    <!-- Librería de Supabase (debe cargarse ANTES de app.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="cabecera">
+        <h1>ERP Mantenimiento CNC</h1>
+    </header>
+
+    <main>
+
+        <!-- ================= INICIO ================= -->
+        <section id="form-inicio" class="pantalla activa">
+            <h2>Menú de inicio</h2>
+            <button data-ir="form-captura">Captura</button>
+            <button data-ir="form-informes">Informes y consulta</button>
+            <button data-ir="form-parametros">Parámetros</button>
+            <button id="btn-salir" class="btn-secundario">Salir</button>
+        </section>
+
+        <!-- ================= CAPTURA ================= -->
+        <section id="form-captura" class="pantalla">
+            <h2>Captura</h2>
+            <button data-ir="form-captura-empresa">Empresa</button>
+            <button data-ir="form-captura-maquina">Datos de máquina</button>
+            <button data-ir="form-captura-tickets">Tickets y servicios</button>
+            <button data-ir="form-captura-tareas">Cosas por hacer</button>
+            <button data-ir="form-inicio" class="btn-secundario">Volver al inicio</button>
+        </section>
+
+        <!-- Captura: Empresa (formulario funcional) -->
+        <section id="form-captura-empresa" class="pantalla">
+            <h2>Captura de empresa</h2>
+
+            <form id="formulario-empresa">
+                <label>Nombre *
+                    <input type="text" id="emp-nombre" required>
+                </label>
+                <label>Teléfono
+                    <input type="tel" id="emp-telefono">
+                </label>
+                <label>Dirección
+                    <input type="text" id="emp-direccion">
+                </label>
+                <label>Página web
+                    <input type="text" id="emp-web">
+                </label>
+                <button type="submit">Guardar empresa</button>
+            </form>
+            <p id="msg-empresa" class="mensaje" role="status"></p>
+
+            <button data-ir="form-captura-contacto">Registrar contacto</button>
+            <button data-ir="form-captura" class="btn-secundario">Volver a captura</button>
+        </section>
+
+        <!-- Captura: Contacto (pendiente) -->
+        <section id="form-captura-contacto" class="pantalla">
+            <h2>Captura de contacto</h2>
+            <p class="pendiente">Aquí irá el formulario de contactos.</p>
+            <button data-ir="form-captura-empresa" class="btn-secundario">Volver a empresa</button>
+        </section>
+
+        <!-- Captura: Máquina (pendiente) -->
+        <section id="form-captura-maquina" class="pantalla">
+            <h2>Datos de máquina</h2>
+            <p class="pendiente">Aquí irá el formulario de máquinas.</p>
+            <button data-ir="form-captura" class="btn-secundario">Volver a captura</button>
+        </section>
+
+        <!-- Captura: Tickets (pendiente) -->
+        <section id="form-captura-tickets" class="pantalla">
+            <h2>Tickets y servicios</h2>
+            <p class="pendiente">Aquí irá el formulario de órdenes de trabajo.</p>
+            <button data-ir="form-captura" class="btn-secundario">Volver a captura</button>
+        </section>
+
+        <!-- Captura: Tareas (pendiente) -->
+        <section id="form-captura-tareas" class="pantalla">
+            <h2>Cosas por hacer</h2>
+            <p class="pendiente">Aquí irá la agenda.</p>
+            <button data-ir="form-captura" class="btn-secundario">Volver a captura</button>
+        </section>
+
+        <!-- ================= INFORMES ================= -->
+        <section id="form-informes" class="pantalla">
+            <h2>Informes y consulta</h2>
+            <button data-ir="form-inf-empresa">Empresas y contactos</button>
+            <button data-ir="form-inf-maquina">Máquinas e historial</button>
+            <button data-ir="form-inf-tickets">Tickets y servicios</button>
+            <button data-ir="form-inf-tareas">Cosas por hacer y calendario</button>
+            <button data-ir="form-inicio" class="btn-secundario">Volver al inicio</button>
+        </section>
+
+        <!-- Informe: Empresas (lista funcional) -->
+        <section id="form-inf-empresa" class="pantalla">
+            <h2>Empresas y contactos</h2>
+            <ul id="lista-empresas" class="lista"></ul>
+            <button data-ir="form-informes" class="btn-secundario">Volver a informes</button>
+        </section>
+
+        <!-- Informe: Máquinas (pendiente) -->
+        <section id="form-inf-maquina" class="pantalla">
+            <h2>Máquinas e historial</h2>
+            <p class="pendiente">Aquí irá el historial por máquina.</p>
+            <button data-ir="form-informes" class="btn-secundario">Volver a informes</button>
+        </section>
+
+        <!-- Informe: Tickets (pendiente) -->
+        <section id="form-inf-tickets" class="pantalla">
+            <h2>Tickets y servicios</h2>
+            <p class="pendiente">Aquí irá el listado de órdenes de trabajo.</p>
+            <button data-ir="form-informes" class="btn-secundario">Volver a informes</button>
+        </section>
+
+        <!-- Informe: Tareas (pendiente) -->
+        <section id="form-inf-tareas" class="pantalla">
+            <h2>Cosas por hacer y calendario</h2>
+            <p class="pendiente">Aquí irá la vista de agenda.</p>
+            <button data-ir="form-informes" class="btn-secundario">Volver a informes</button>
+        </section>
+
+        <!-- ================= PARÁMETROS ================= -->
+        <section id="form-parametros" class="pantalla">
+            <h2>Parámetros</h2>
+            <p class="pendiente">Aquí irán los ajustes de la aplicación.</p>
+            <button data-ir="form-inicio" class="btn-secundario">Volver al inicio</button>
+        </section>
+
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>

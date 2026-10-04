@@ -1,0 +1,176 @@
+/* ==========================================
+   VARIABLES DE COLOR Y TIPOGRAFÍA
+   ========================================== */
+:root {
+    --fondo: #eef1f4;
+    --tinta: #1d2530;
+    --acero: #3b4a5a;
+    --acento: #f2b705;      /* amarillo de maquinaria */
+    --borde: #c3ccd6;
+    --blanco: #ffffff;
+    --error: #b3261e;
+    --ok: #1b6e3c;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--tinta);
+    background: var(--fondo);
+}
+
+/* ==========================================
+   CABECERA
+   ========================================== */
+.cabecera {
+    background: var(--acero);
+    color: var(--blanco);
+    padding: 16px 20px;
+    border-bottom: 5px solid var(--acento);
+}
+
+.cabecera h1 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+/* ==========================================
+   NAVEGACIÓN ENTRE PANTALLAS
+   Solo la pantalla con la clase "activa" se ve
+   ========================================== */
+main {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.pantalla {
+    display: none;
+}
+
+.pantalla.activa {
+    display: block;
+}
+
+h2 {
+    margin: 0 0 16px;
+    font-size: 1.3rem;
+}
+
+/* ==========================================
+   BOTONES
+   ========================================== */
+button {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 14px 16px;
+    font: inherit;
+    font-weight: 600;
+    text-align: left;
+    color: var(--tinta);
+    background: var(--blanco);
+    border: 1px solid var(--borde);
+    border-left: 6px solid var(--acento);
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #fff8dc;
+}
+
+button:focus-visible,
+input:focus-visible {
+    outline: 3px solid var(--acero);
+    outline-offset: 2px;
+}
+
+.btn-secundario {
+    margin-top: 24px;
+    background: transparent;
+    border-left-color: var(--borde);
+    font-weight: 500;
+}
+
+/* ==========================================
+   FORMULARIOS
+   ========================================== */
+label {
+    display: block;
+    margin: 12px 0;
+    font-weight: 600;
+}
+
+input {
+    display: block;
+    width: 100%;
+    margin-top: 4px;
+    padding: 12px;
+    font: inherit;
+    font-weight: 400;
+    background: var(--blanco);
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+}
+
+form button[type="submit"] {
+    background: var(--acero);
+    color: var(--blanco);
+    border-left-color: var(--acento);
+}
+
+form button[type="submit"]:hover {
+    background: var(--tinta);
+}
+
+/* ==========================================
+   MENSAJES Y LISTAS
+   ========================================== */
+.mensaje {
+    min-height: 1.5em;
+    font-weight: 600;
+}
+
+.mensaje.ok {
+    color: var(--ok);
+}
+
+.mensaje.error {
+    color: var(--error);
+}
+
+.pendiente {
+    padding: 14px;
+    color: var(--acero);
+    background: var(--blanco);
+    border: 1px dashed var(--borde);
+    border-radius: 6px;
+}
+
+.lista {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.lista li {
+    margin: 8px 0;
+    padding: 12px 14px;
+    background: var(--blanco);
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+}
+
+.lista .dato {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--acero);
+}
