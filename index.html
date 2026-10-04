@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERP Mantenimiento - Paso 1</title>
+    <style>
+        /* Regla arquitectónica clave: controlamos la visibilidad desde CSS */
+        .pantalla {
+            display: none;
+        }
+        .pantalla.activa {
+            display: block;
+        }
+        
+        /* Estilos mínimos temporales para espaciar los botones */
+        button {
+            display: block;
+            margin: 10px 0;
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 250px;
+            text-align: left;
+        }
+        .btn-volver {
+            background-color: #f0f0f0;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CABECERA GLOBAL -->
+    <header style="border-bottom: 2px solid #333; padding-bottom: 10px; margin-bottom: 20px;">
+        <h2>[LOGO] ERP Personal de Mantenimiento</h2>
+    </header>
+
+    <main>
+        <!-- ==================================================== -->
+        <!-- 1er FORMULARIO: PANTALLA DE INICIO (MENU PRINCIPAL)  -->
+        <!-- ==================================================== -->
+        <section id="form-inicio" class="pantalla activa">
+            <h3>1er Formulario - Menú de Inicio</h3>
+            <button id="btn-ir-captura">1.1 Captura ➡️</button>
+            <button id="btn-ir-informes">1.2 Informes/Consulta ➡️</button>
+            <button id="btn-ir-parametros">1.3 Parámetros ➡️</button>
+            <button id="btn-salir">1.4 Salir ❌</button>
+        </section>
+
+        <!-- 2do FORMULARIO: CAPTURA (Contenedor vacío temporal) -->
+        <section id="form-captura" class="pantalla">
+            <h3>2do Formulario - Menú de Captura</h3>
+            <p>Contenido del menú de captura (se desarrollará en el Paso 2).</p>
+            <button id="btn-volver-inicio-captura" class="btn-volver">⬅️ Volver al Inicio</button>
+        </section>
+
+        <!-- 3er FORMULARIO: INFORMES (Contenedor vacío temporal) -->
+        <section id="form-informes" class="pantalla">
+            <h3>3er Formulario - Menú de Informes/Consultas</h3>
+            <p>Contenido del menú de informes (se desarrollará en el Paso 3).</p>
+            <button id="btn-volver-inicio-informes" class="btn-volver">⬅️ Volver al Inicio</button>
+        </section>
+
+        <!-- 4to FORMULARIO: PARÁMETROS (Contenedor vacío temporal) -->
+        <section id="form-parametros" class="pantalla">
+            <h3>4to Formulario - Parámetros</h3>
+            <p>Configuraciones generales del sistema.</p>
+            <button id="btn-volver-inicio-parametros" class="btn-volver">⬅️ Volver al Inicio</button>
+        </section>
+    </main>
+
+    <!-- Enlazamos tu lógica de JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>
