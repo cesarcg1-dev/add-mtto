@@ -143,3 +143,68 @@ btnVolverTareas.addEventListener('click', () => {
     formCapturaTareas.classList.remove('activa');
     formCaptura.classList.add('activa');
 });
+
+
+// ==========================================
+// CAPTURAS ADICIONALES PARA EL PASO 3
+// ==========================================
+const formInfEmpresa = document.getElementById('form-inf-empresa');
+const formInfMaquina = document.getElementById('form-inf-maquina');
+const formInfTickets = document.getElementById('form-inf-tickets');
+const formInfTareas = document.getElementById('form-inf-tareas');
+
+// Botones del Menú de Informes (Hijos del 3er Formulario)
+const btn31InfEmpresa = document.getElementById('btn-3-1-inf-empresa');
+const btn32InfMaquina = document.getElementById('btn-3-2-inf-maquina');
+const btn33InfTickets = document.getElementById('btn-3-3-inf-tickets');
+const btn34InfTareas = document.getElementById('btn-3-4-inf-tareas');
+
+// Botones de retorno de las pantallas de informes
+const btnVolverInfEmpresa = document.getElementById('btn-volver-inf-empresa');
+const btnVolverInfMaquina = document.getElementById('btn-volver-inf-maquina');
+const btnVolverInfTickets = document.getElementById('btn-volver-inf-tickets');
+const btnVolverInfTareas = document.getElementById('btn-volver-inf-tareas');
+
+// ==========================================
+// LÓGICA DE NAVEGACIÓN - MÓDULO DE INFORMES
+// ==========================================
+
+// --- Consulta: Empresa y Contacto ---
+btn31InfEmpresa.addEventListener('click', () => {
+    formInformes.classList.remove('activa');
+    formInfEmpresa.classList.add('activa');
+});
+btnVolverInfEmpresa.addEventListener('click', () => {
+    formInfEmpresa.classList.remove('activa');
+    formInformes.classList.add('activa');
+});
+
+// --- Consulta: Máquinas ---
+btn32InfMaquina.addEventListener('click', () => {
+    formInformes.classList.remove('activa');
+    formInfMaquina.classList.add('activa');
+});
+btnVolverInfMaquina.addEventListener('click', () => {
+    formInfMaquina.classList.remove('activa');
+    formInformes.classList.add('activa');
+});
+
+// --- Consulta: Tickets ---
+btn33InfTickets.addEventListener('click', () => {
+    formInformes.classList.remove('activa');
+    formInfTickets.classList.add('activa');
+});
+btnVolverInfTickets.addEventListener('click', () => {
+    formInfTickets.classList.remove('activa');
+    formInformes.classList.add('activa');
+});
+
+// --- Consulta: Tareas / Calendario ---
+btn34InfTareas.addEventListener('click', () => {
+    formInformes.classList.remove('activa');
+    formInfTareas.classList.add('activa');
+});
+btnVolverInfTareas.addEventListener('click', () => {
+    formInfTareas.classList.remove('activa');
+    formInformes.classList.add('activa');
+});
