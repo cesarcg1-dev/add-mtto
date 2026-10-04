@@ -26,6 +26,9 @@ function mostrarPantalla(id) {
     if (id === 'form-inf-empresa') {
         cargarEmpresas();
     }
+        if (id === 'form-captura-contacto') {
+        cargarSelectEmpresas();
+    }
 }
 
 document.querySelectorAll('[data-ir]').forEach((boton) => {
@@ -40,7 +43,6 @@ document.getElementById('btn-salir').addEventListener('click', () => {
 
 
 // ==========================================
-<<<<<<< HEAD
 // 3. EMPRESAS (tabla "clientes")
 // ==========================================
 const formularioEmpresa = document.getElementById('formulario-empresa');
@@ -107,149 +109,65 @@ async function cargarEmpresas() {
         lista.appendChild(li);
     });
 }
-=======
-// CAPTURAS ADICIONALES PARA EL PASO 2
-// ==========================================
-const formCapturaEmpresa = document.getElementById('form-captura-empresa');
-const formCapturaContacto = document.getElementById('form-captura-contacto');
-const formCapturaMaquina = document.getElementById('form-captura-maquina');
-const formCapturaTickets = document.getElementById('form-captura-tickets');
-const formCapturaTareas = document.getElementById('form-captura-tareas');
-
-// Botones del Menú de Captura (Hijos del 2do Formulario)
-const btn21Empresa = document.getElementById('btn-2-1-empresa');
-const btn22Maquina = document.getElementById('btn-2-2-maquina');
-const btn23Tickets = document.getElementById('btn-2-3-tickets');
-const btn24Tareas = document.getElementById('btn-2-4-tareas');
-
-// Botones internos de los sub-formularios
-const btn211Contacto = document.getElementById('btn-2-1-1-contacto');
-const btnVolverEmpresa = document.getElementById('btn-volver-captura-empresa');
-const btnVolverContacto = document.getElementById('btn-volver-empresa-contacto');
-const btnVolverMaquina = document.getElementById('btn-volver-captura-maquina');
-const btnVolverTickets = document.getElementById('btn-volver-captura-tickets');
-const btnVolverTareas = document.getElementById('btn-volver-captura-tareas');
 
 // ==========================================
-// LÓGICA DE NAVEGACIÓN - MÓDULO DE CAPTURA
+// 4. CONTACTOS (tabla "contactos")
 // ==========================================
+const formularioContacto = document.getElementById('formulario-contacto');
+const msgContacto = document.getElementById('msg-contacto');
 
-// --- Flujo: Empresa y Contactos ---
-btn21Empresa.addEventListener('click', () => {
-    formCaptura.classList.remove('activa');
-    formCapturaEmpresa.classList.add('activa');
+// --- Llenar el desplegable con las empresas ---
+async function cargarSelectEmpresas() {
+    const select = document.getElementById('con-empresa');
+
+    const { data, error } = await supabaseClient
+        .from('clientes')
+        .select('id_emp, nombre_emp')
+        .order('nombre_emp');
+
+    if (error) {
+        console.error(error);
+        msgContacto.textContent = 'No se pudieron cargar las empresas: ' + error.message;
+        msgContacto.className = 'mensaje error';
+        return;
+    }
+
+    select.innerHTML = '<option value="">-- Elige una empresa --</option>';
+
+    data.forEach((empresa) => {
+        const opcion = document.createElement('option');
+        opcion.value = empresa.id_emp;          // lo que se guarda (el número)
+        opcion.textContent = empresa.nombre_emp; // lo que se ve (el nombre)
+        select.appendChild(opcion);
+    });
+}
+
+// --- Guardar un contacto nuevo ---
+formularioContacto.addEventListener('submit', async (evento) => {
+    evento.preventDefault();
+
+    const nuevoContacto = {
+        id_emp: Number(document.getElementById('con-empresa').value),
+        nombre_con: document.getElementById('con-nombre').value.trim(),
+        cargo_con: document.getElementById('con-cargo').value.trim(),
+        telefono_con: document.getElementById('con-telefono').value.trim(),
+        email_con: document.getElementById('con-email').value.trim(),
+        whatsapp: document.getElementById('con-whatsapp').value.trim()
+    };
+
+    const { error } = await supabaseClient.from('contactos').insert(nuevoContacto);
+
+    if (error) {
+        console.error(error);
+        msgContacto.textContent = 'No se pudo guardar: ' + error.message;
+        msgContacto.className = 'mensaje error';
+    } else {
+        msgContacto.textContent = 'Contacto guardado.';
+        msgContacto.className = 'mensaje ok';
+        // Limpiamos los campos pero dejamos la empresa elegida,
+        // por si quieres capturar otro contacto de la misma empresa.
+        const empresaElegida = document.getElementById('con-empresa').value;
+        formularioContacto.reset();
+        document.getElementById('con-empresa').value = empresaElegida;
+    }
 });
-
-btnVolverEmpresa.addEventListener('click', () => {
-    formCapturaEmpresa.classList.remove('activa');
-    formCaptura.classList.add('activa');
-});
-
-btn211Contacto.addEventListener('click', () => {
-    formCapturaEmpresa.classList.remove('activa');
-    formCapturaContacto.classList.add('activa');
-});
-
-btnVolverContacto.addEventListener('click', () => {
-    formCapturaContacto.classList.remove('activa');
-    formCapturaEmpresa.classList.add('activa');
-});
-
-// --- Flujo: Máquinas ---
-btn22Maquina.addEventListener('click', () => {
-    formCaptura.classList.remove('activa');
-    formCapturaMaquina.classList.add('activa');
-});
-
-btnVolverMaquina.addEventListener('click', () => {
-    formCapturaMaquina.classList.remove('activa');
-    formCaptura.classList.add('activa');
-});
-
-// --- Flujo: Tickets ---
-btn23Tickets.addEventListener('click', () => {
-    formCaptura.classList.remove('activa');
-    formCapturaTickets.classList.add('activa');
-});
-
-btnVolverTickets.addEventListener('click', () => {
-    formCapturaTickets.classList.remove('activa');
-    formCaptura.classList.add('activa');
-});
-
-// --- Flujo: Tareas ---
-btn24Tareas.addEventListener('click', () => {
-    formCaptura.classList.remove('activa');
-    formCapturaTareas.classList.add('activa');
-});
-
-btnVolverTareas.addEventListener('click', () => {
-    formCapturaTareas.classList.remove('activa');
-    formCaptura.classList.add('activa');
-});
-
-
-// ==========================================
-// CAPTURAS ADICIONALES PARA EL PASO 3
-// ==========================================
-const formInfEmpresa = document.getElementById('form-inf-empresa');
-const formInfMaquina = document.getElementById('form-inf-maquina');
-const formInfTickets = document.getElementById('form-inf-tickets');
-const formInfTareas = document.getElementById('form-inf-tareas');
-
-// Botones del Menú de Informes (Hijos del 3er Formulario)
-const btn31InfEmpresa = document.getElementById('btn-3-1-inf-empresa');
-const btn32InfMaquina = document.getElementById('btn-3-2-inf-maquina');
-const btn33InfTickets = document.getElementById('btn-3-3-inf-tickets');
-const btn34InfTareas = document.getElementById('btn-3-4-inf-tareas');
-
-// Botones de retorno de las pantallas de informes
-const btnVolverInfEmpresa = document.getElementById('btn-volver-inf-empresa');
-const btnVolverInfMaquina = document.getElementById('btn-volver-inf-maquina');
-const btnVolverInfTickets = document.getElementById('btn-volver-inf-tickets');
-const btnVolverInfTareas = document.getElementById('btn-volver-inf-tareas');
-
-// ==========================================
-// LÓGICA DE NAVEGACIÓN - MÓDULO DE INFORMES
-// ==========================================
-
-// --- Consulta: Empresa y Contacto ---
-btn31InfEmpresa.addEventListener('click', () => {
-    formInformes.classList.remove('activa');
-    formInfEmpresa.classList.add('activa');
-});
-btnVolverInfEmpresa.addEventListener('click', () => {
-    formInfEmpresa.classList.remove('activa');
-    formInformes.classList.add('activa');
-});
-
-// --- Consulta: Máquinas ---
-btn32InfMaquina.addEventListener('click', () => {
-    formInformes.classList.remove('activa');
-    formInfMaquina.classList.add('activa');
-});
-btnVolverInfMaquina.addEventListener('click', () => {
-    formInfMaquina.classList.remove('activa');
-    formInformes.classList.add('activa');
-});
-
-// --- Consulta: Tickets ---
-btn33InfTickets.addEventListener('click', () => {
-    formInformes.classList.remove('activa');
-    formInfTickets.classList.add('activa');
-});
-btnVolverInfTickets.addEventListener('click', () => {
-    formInfTickets.classList.remove('activa');
-    formInformes.classList.add('activa');
-});
-
-// --- Consulta: Tareas / Calendario ---
-btn34InfTareas.addEventListener('click', () => {
-    formInformes.classList.remove('activa');
-    formInfTareas.classList.add('activa');
-});
-btnVolverInfTareas.addEventListener('click', () => {
-    formInfTareas.classList.remove('activa');
-    formInformes.classList.add('activa');
-});
->>>>>>> 9acd9372645c1d014ce78b1a8d1aabc1a05ac352

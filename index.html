@@ -62,12 +62,39 @@
             <button data-ir="form-captura" class="btn-secundario">Volver a captura</button>
         </section>
 
-        <!-- Captura: Contacto (pendiente) -->
-        <section id="form-captura-contacto" class="pantalla">
-            <h2>Captura de contacto</h2>
-            <p class="pendiente">Aquí irá el formulario de contactos.</p>
-            <button data-ir="form-captura-empresa" class="btn-secundario">Volver a empresa</button>
-        </section>
+<section id="form-captura-contacto" class="pantalla">
+    <h2>Captura de contacto</h2>
+
+    <form id="formulario-contacto">
+        <label>Empresa *
+            <select id="con-empresa" required></select>
+        </label>
+        <label>Nombre *
+            <input type="text" id="con-nombre" required>
+        </label>
+        <label>Cargo
+            <input type="text" id="con-cargo">
+        </label>
+        <label>Teléfono
+            <input type="tel" id="con-telefono">
+        </label>
+        <label>Correo
+            <input type="email" id="con-email">
+        </label>
+        <label>WhatsApp
+            <input type="tel" id="con-whatsapp">
+        </label>
+        <button type="submit">Guardar contacto</button>
+    </form>
+    <p id="msg-contacto" class="mensaje" role="status"></p>
+
+    <button data-ir="form-captura-empresa" class="btn-secundario">Volver a empresa</button>
+</section>
+
+
+
+
+***
 
         <!-- Captura: Máquina (pendiente) -->
         <section id="form-captura-maquina" class="pantalla">
