@@ -4,12 +4,16 @@
 const SUPABASE_URL = "https://yrtxdobtygelagwaxbyd.supabase.co"; // Tu URL real
 const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlydHhkb2J0eWdlbGFnd2F4YnlkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTExMzQ1ODIsImV4cCI6MjEwNjcxMDU4Mn0.NeAFvsJiGhMecmYVVdC1Uv8XnU6LtsyNWFCTl3_NSLg";        // Tu Anon Key real
 
-// Inicializamos el cliente global usando el objeto del SDK de Supabase
-const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+// SOLUCIÓN: Usamos el objeto global de la librería (window.supabase) 
+// y lo guardamos en nuestra variable 'supabaseClient' para evitar conflictos.
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 // ==========================================
 // 1. CAPTURA DE PANTALLAS (SECCIONES)
 // El resto de tu código de navegación sigue igual aquí abajo...
+
+
+
 
 
 
