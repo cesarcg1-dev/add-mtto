@@ -48,27 +48,56 @@
             <button id="btn-salir">1.4 Salir ❌</button>
         </section>
 
-        <!-- 2do FORMULARIO: CAPTURA (Contenedor vacío temporal) -->
+        <!-- ==================================================== -->
+        <!-- 2do FORMULARIO: MENÚ DE CAPTURA                      -->
+        <!-- ==================================================== -->
         <section id="form-captura" class="pantalla">
             <h3>2do Formulario - Menú de Captura</h3>
-            <p>Contenido del menú de captura (se desarrollará en el Paso 2).</p>
-            <button id="btn-volver-inicio-captura" class="btn-volver">⬅️ Volver al Inicio</button>
+            <button id="btn-2-1-empresa">Botón 2.1 - Empresa ➡️</button>
+            <button id="btn-2-2-maquina">Botón 2.2 - Datos de Máquina ➡️</button>
+            <button id="btn-2-3-tickets">Botón 2.3 - Tickets y Servicios ➡️</button>
+            <button id="btn-2-4-tareas">Botón 2.4 - Cosas por hacer ➡️</button>
+            <button id="btn-volver-inicio-captura" class="btn-volver">⬅️ Botón 2.5 - Salir (Inicio)</button>
         </section>
 
-        <!-- 3er FORMULARIO: INFORMES (Contenedor vacío temporal) -->
-        <section id="form-informes" class="pantalla">
-            <h3>3er Formulario - Menú de Informes/Consultas</h3>
-            <p>Contenido del menú de informes (se desarrollará en el Paso 3).</p>
-            <button id="btn-volver-inicio-informes" class="btn-volver">⬅️ Volver al Inicio</button>
+        <!-- SUB-FORMULARIOS DE CAPTURA (Contenedores temporales) -->
+        
+        <!-- 5to Formulario: Empresa -->
+        <section id="form-captura-empresa" class="pantalla">
+            <h3>5to Formulario - Captura de Empresa</h3>
+            <p>[Espacio futuro para el formulario de Clientes/Empresas]</p>
+            <button id="btn-2-1-1-contacto">Botón 2.1.1 - Registrar Contacto ➡️</button>
+            <button id="btn-volver-captura-empresa" class="btn-volver">⬅️ Botón 2.1.2 - Salir (Menú Captura)</button>
         </section>
 
-        <!-- 4to FORMULARIO: PARÁMETROS (Contenedor vacío temporal) -->
-        <section id="form-parametros" class="pantalla">
-            <h3>4to Formulario - Parámetros</h3>
-            <p>Configuraciones generales del sistema.</p>
-            <button id="btn-volver-inicio-parametros" class="btn-volver">⬅️ Volver al Inicio</button>
+        <!-- 6to Formulario: Contacto (Se accede desde Empresa) -->
+        <section id="form-captura-contacto" class="pantalla">
+            <h3>6to Formulario - Captura de Contacto</h3>
+            <p>[Espacio futuro para el formulario de Contactos]</p>
+            <button id="btn-volver-empresa-contacto" class="btn-volver">⬅️ Volver a Empresa</button>
         </section>
-    </main>
+
+        <!-- 6to Form (Según tu lista, asignado a Máquina) -->
+        <section id="form-captura-maquina" class="pantalla">
+            <h3>6to Formulario - Datos de Máquina e Historial</h3>
+            <p>[Espacio futuro para el formulario de Máquinas]</p>
+            <button id="btn-volver-captura-maquina" class="btn-volver">⬅️ Volver al Menú Captura</button>
+        </section>
+
+        <!-- 7mo Formulario: Tickets -->
+        <section id="form-captura-tickets" class="pantalla">
+            <h3>7mo Formulario - Tickets y Servicios</h3>
+            <p>[Espacio futuro para el formulario de Órdenes de Trabajo]</p>
+            <button id="btn-volver-captura-tickets" class="btn-volver">⬅️ Volver al Menú Captura</button>
+        </section>
+
+        <!-- 8vo Formulario: Tareas -->
+        <section id="form-captura-tareas" class="pantalla">
+            <h3>8vo Formulario - Cosas por Hacer y Calendario</h3>
+            <p>[Espacio futuro para la agenda/calendario]</p>
+            <button id="btn-volver-captura-tareas" class="btn-volver">⬅️ Botón 2.4 - Salir (Menú Captura)</button>
+        </section>
+
 
     <!-- Enlazamos tu lógica de JavaScript -->
     <script src="app.js"></script>
